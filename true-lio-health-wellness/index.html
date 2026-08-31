@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>True L.I.O. Health & Wellness: Front-End Revenue Snapshot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script data-goatcounter="https://lucent-intelligence.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root {
+    --bg: #f5f3ea;
+    --surface: #fffdf8;
+    --surface-2: #ece7d8;
+    --ink: #2c2c26;
+    --ink-soft: #4a4c40;
+    --ink-faint: #75765f;
+    --border: #ddd6c1;
+    --accent: #6d7a5c;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6e9da;
+    --action: #5f7c7e;
+    --action-soft: #dfe8e8;
+    --action-ink: #ffffff;
+    --shadow: 0 1px 2px rgba(52,52,46,0.06), 0 6px 18px rgba(52,52,46,0.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1c16; --surface: #23241d; --surface-2: #2a2b22;
+    --ink: #efeee3; --ink-soft: #bcbcab; --ink-faint: #8c8d7d;
+    --border: #3a3b2f; --accent: #a3b48c; --accent-ink: #1c2114;
+    --accent-soft: #2e3626; --action: #8fb3b5; --action-soft: #223333;
+    --action-ink: #10201f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 22px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .page { max-width: 740px; margin: 0 auto; padding: 20px 18px 30px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  header.brief-head {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  header.brief-head::before {
+    content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px;
+    background: var(--accent); border-radius: 0 3px 3px 0;
+  }
+  .sprig {
+    position: absolute; top: 14px; right: 18px; width: 46px; height: 46px;
+    opacity: 0.55; color: var(--accent);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: "Fjalla One", "IBM Plex Sans", sans-serif;
+    font-weight: 400; font-size: clamp(22px, 4.8vw, 27px);
+    letter-spacing: 0.01em; margin: 8px 0 7px; text-wrap: balance;
+    color: var(--ink);
+  }
+  .sub { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 10px; max-width: 62ch; }
+  .head-meta {
+    display: flex; flex-wrap: wrap; gap: 5px 16px;
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint); border-top: 1px solid var(--border);
+    padding-top: 9px; margin-top: 2px;
+  }
+
+  .trust-strip {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 12px; color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .trust-strip strong { color: var(--ink); font-weight: 500; }
+
+  section.block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    padding: 13px 20px 14px;
+    margin-bottom: 9px;
+  }
+  .kicker {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 0 0 6px;
+  }
+  .kicker .n {
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.05em;
+  }
+  h2 {
+    font-family: "Fjalla One", "IBM Plex Sans", sans-serif;
+    font-weight: 400; font-size: 15.5px; letter-spacing: 0.015em;
+    margin: 0; color: var(--ink);
+  }
+  section.block p { margin: 0 0 7px; font-size: 13px; color: var(--ink-soft); }
+  section.block p:last-child { margin-bottom: 0; }
+  section.block strong { color: var(--ink); font-weight: 600; }
+  .lede p { font-size: 13.5px; }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin: 8px 0 9px;
+  }
+  .stat {
+    background: var(--surface-2); border-radius: 3px;
+    padding: 7px 9px; border: 1px solid var(--border);
+  }
+  .stat .num {
+    font-family: "IBM Plex Mono", monospace; font-weight: 600;
+    font-size: 17px; color: var(--action);
+  }
+  .stat .lbl { font-size: 10.5px; color: var(--ink-faint); margin-top: 1px; line-height: 1.3; }
+  .aside-note { font-size: 11px; color: var(--ink-faint); font-style: italic; margin: -3px 0 8px; }
+
+  .pull {
+    border-left: 2px solid var(--action);
+    background: var(--action-soft);
+    border-radius: 0 3px 3px 0;
+    padding: 7px 12px;
+    font-size: 12.5px; color: var(--ink);
+    margin: 4px 0 2px;
+  }
+  .pull strong { color: var(--action); }
+
+  .close-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 15px 20px 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 9px;
+  }
+  .close-block h2 { color: var(--accent); }
+  .close-block p { color: var(--ink); font-size: 13px; margin: 0 0 7px; }
+  .close-block p:last-child { margin-bottom: 0; font-weight: 500; }
+
+  .cta-block {
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .cta-text { font-size: 13px; color: var(--accent-ink); max-width: 44ch; }
+  .cta-text strong { display: block; font-family: "Fjalla One", sans-serif; font-size: 15.5px; font-weight: 400; letter-spacing: 0.01em; margin-bottom: 2px; }
+  .cta-text .urgency { display: block; font-size: 11px; opacity: 0.85; margin-top: 3px; }
+  .cta-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+    background: var(--surface); color: var(--accent);
+    border-radius: 3px; padding: 11px 18px;
+    white-space: nowrap; text-decoration: none; flex: none;
+  }
+
+  .signoff {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 11.5px; color: var(--ink-faint);
+    padding: 0 3px; margin-bottom: 4px; flex-wrap: wrap; gap: 4px;
+  }
+  .signoff strong { color: var(--ink-soft); font-weight: 600; }
+
+  footer {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", monospace;
+    line-height: 1.5;
+  }
+  footer p { margin: 2px 0; }
+
+  @media (max-width: 480px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .cta-block { flex-direction: column; align-items: stretch; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="brief-head">
+    <svg class="sprig" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M32 58V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M32 30C32 30 20 26 18 14C18 14 32 14 32 30Z" fill="currentColor"/>
+      <path d="M32 24C32 24 44 20 46 8C46 8 32 8 32 24Z" fill="currentColor"/>
+      <path d="M32 40C32 40 22 37 20 27C20 27 32 27 32 40Z" fill="currentColor"/>
+      <path d="M32 34C32 34 42 31 44 21C44 21 32 21 32 34Z" fill="currentColor"/>
+    </svg>
+    <div class="eyebrow">Prepared exclusively for True L.I.O. Health & Wellness</div>
+    <h1>The Gap Between a 5.0★ Reputation and a Path That Loses People Before They Show Up</h1>
+    <p class="sub">True L.I.O.'s reviews prove the care works once someone's in the room. The real question is how many people never make it that far, and where along the way they're lost.</p>
+    <div class="head-meta">
+      <span>Attn: Lionela Colon, Founder</span>
+      <span>Miami, FL</span>
+      <span>Prepared by Lucent Intelligence</span>
+    </div>
+  </header>
+
+  <div class="trust-strip">
+    <strong>A quick note on who's writing this:</strong> Lucent Intelligence builds the front-end nurture system for hormone, weight-loss, and metabolic clinics: the layer between a click, a DM, or a phone call and a booked consult. We build a snapshot like this before every clinic we reach out to, not after. This isn't a pitch; it's what we actually found.
+  </div>
+
+  <section class="block lede">
+    <div class="kicker"><span class="n">01</span><h2>What's already working in your favor</h2></div>
+    <p>True L.I.O. holds <strong>a 5.0-star rating across 92 Google reviews</strong>, genuinely elite for a single-location Miami weight-loss and wellness practice, and rare enough that most competitors in the category never get close. The reviews aren't generic either: patients name staff by name (Lio, Kaly, Cristina), cite specific outcomes (25 lbs in three months on tirzepatide, a non-surgical BBL result they'd "recommend 1000%"), and describe a provider who doesn't rush the process. That's the kind of reputation most clinics spend years building. The real question isn't whether the care converts once someone's in front of a provider. <strong>It's how many people who'd become that next 5-star review get lost somewhere between their first inquiry and the appointment.</strong></p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">02</span><h2>What we noticed when we looked</h2></div>
+    <p>We looked at True L.I.O.'s public presence the way a prospective patient would, starting wherever a search or a scroll would actually land them, since every one of those landing spots is a door into the same funnel.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">24K</div><div class="lbl">Instagram followers (@true.lio)</div></div>
+      <div class="stat"><div class="num">25</div><div class="lbl">Facebook page likes</div></div>
+      <div class="stat"><div class="num">317</div><div class="lbl">TikTok followers (@true.lio)</div></div>
+    </div>
+    <p class="aside-note">(We pull this same read for every clinic we're seriously interested in working with, not just yours.)</p>
+    <p>True L.I.O. doesn't come up on page one for searches like "GLP-1 weight loss Miami" or "medical weight loss Miami," and <strong>isn't running paid Meta or Google campaigns right now</strong>. That means virtually all 24,000 of those Instagram followers arrived organically, which is real proof the content works. It also means <strong>almost every new inquiry is landing as a phone call or a website form, not a click-to-book funnel</strong>.</p>
+    <p class="pull">Nearly all of that audience lives on one channel, and none of it is currently backed by paid reach. A prospective patient who lands on Facebook or TikTok instead meets a page that reads as inactive (<strong>25 likes, 317 followers</strong>), while every inquiry that does come in has to be caught and nurtured by hand.</p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">03</span><h2>Why that gap matters more heading into 2027</h2></div>
+    <p>True L.I.O. doesn't have an attention problem. 24,000 organic Instagram followers and a 5.0-star reputation solve that. The category is getting more crowded, though: aesthetic medicine's global market is projected near <strong>$124.7 billion in 2026</strong>, up from $99.4 billion in 2023, and more of that growth is chasing the same GLP-1 searches every month. When more competitors start paying for the attention True L.I.O. currently gets for free, organic reach stops being an advantage on its own. It becomes one more channel competing for a shrinking share of a patient's attention.</p>
+    <p>In that kind of market, the deciding factor usually isn't who has the better reputation. Miami has <strong>roughly 73 medical spas</strong> competing in this same broad category, and 91% of them are already rated 4.7 stars or higher, with nearly half sitting at a perfect 5.0 (Medical Spa Locator; MedSpa Scout, 2026). A near-perfect rating is table stakes in this market, not a differentiator. What actually moves market share in a field that crowded is speed: <strong>78% of buyers choose the business that responds to their inquiry first</strong>, and the odds of qualifying a lead drop sharply with every minute of delay (LeanData; MIT Sloan). True L.I.O. already wins the reputation contest. <strong>In a market with 73 similarly-rated options, the response-speed contest is the one that actually decides who gets the patient</strong>, and it's the one that decides who stays top of mind as the market keeps getting more crowded.</p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">04</span><h2>The other half: what happens after someone reaches out</h2></div>
+    <p>Every patient path runs through the same handful of moments: an inquiry comes in, someone responds, the patient gets qualified, the appointment gets booked, and the patient shows up. True L.I.O. already runs GoHighLevel through a marketing partner, and the $299 new-patient offer paired with the Vagaro booking widget makes booking itself simple once a patient has decided to book, but neither tool touches the harder moments before that decision. With no paid Meta or Google campaigns running, nearly every new inquiry arrives as a phone call or a website form, not a click-to-book funnel, which means a person has to catch and route each one. That matters most after hours: nationally, <strong>43% of calls to local businesses land outside business hours</strong>, and that volume clusters in the two to three hours right after close, right when someone finally has time to think seriously about a GLP-1 program. A missed call there is rarely called back before the prospect finds someone else who picked up. The practice's own site adds a second gap: it tells new patients that after they book, someone will "promptly reach out&nbsp;.&nbsp;.&nbsp;. to gather additional information," meaning <strong>qualification happens after the commitment rather than before it</strong>, and there's no visible sequence for a website form fill that isn't ready to book on the spot. That's a real cost, since most patients don't convert on the first touch: it typically takes <strong>6 to 8 meaningful touchpoints</strong> to turn an inquiry into a sale, and <strong>roughly 80% of sales close only after five or more follow-ups</strong>. A warm lead with no fast first response, and a cold lead with no plan for touch two through eight, are both ordinary ways for a real GLP-1 prospect to <strong>become someone else's 5-star review instead of True L.I.O.'s</strong>.</p>
+  </section>
+
+  <div class="close-block">
+    <div class="kicker"><span class="n">05</span><h2>The market isn't waiting</h2></div>
+    <p>None of this happens in a vacuum. Miami's GLP-1 and medical weight-loss category is growing fast, and a field that's already this crowded attracts more competitors every quarter, most of them chasing the same handful of neighborhoods and the same GLP-1 searches. True L.I.O. has <strong>a head start most of them don't</strong>: a 5.0-star reputation and an audience it built without paying for it. <strong>A head start only stays a head start if it's the practice patients actually reach when they act on it.</strong></p>
+    <p>As more of them turn on paid marketing, winning stops being about who has the best reviews. Everyone will. It comes down to <strong>timing</strong>: who's already top of mind before the prospect starts typing, and who catches them the moment they raise their hand.</p>
+    <p>Because if they don't hear back fast enough, they're not gone. They're one search away from the clinic down the road.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-text"><strong>Worth 20 minutes?</strong>See exactly where this shows up in True L.I.O. Health & Wellness's own numbers. No pitch, just the map.<span class="urgency">Lucent takes on a limited number of Mapping Calls per metro area each month.</span></div>
+    <a class="cta-btn" href="https://lucentintelligence.io/book-now">Continue Discussion &rarr;</a>
+  </div>
+
+  <div class="signoff"><strong>Caleb Barretto</strong> &middot; Lucent Intelligence &middot; Patient Revenue OS&trade;</div>
+
+  <footer>
+    <p>Sources: Google Business Profile listing for True L.I.O. Health & Wellness; public Instagram, Facebook, and TikTok profiles for @true.lio; Google search results for "GLP-1 weight loss Miami" and "medical weight loss Miami"; Medical Spa Locator and MedSpa Scout, Miami medical spa market counts (2026); ScaleHaven, aesthetic medicine market sizing (2026); LeanData, lead response-time research; CallRail, after-hours call volume data (2024); Salesforce / Rain Group, sales touchpoint research. Figures reflect a public scan of True L.I.O.'s Google, Instagram, Facebook, and TikTok profiles conducted on August 28, 2026.</p>
+    <p>Prepared for True L.I.O. Health & Wellness only, not a template for other clinics.</p>
+  </footer>
+
+</div>
+</body>
+</html>
