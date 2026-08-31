@@ -147,6 +147,13 @@
   }
   .pull strong { color: var(--action); }
 
+  .svg-chart {
+    width: 100%; height: auto; display: block;
+    margin: 9px 0 4px;
+    border: 1px solid var(--border); border-radius: 4px;
+    background: var(--surface);
+  }
+
   .close-block {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -237,11 +244,24 @@
   <section class="block">
     <div class="kicker"><span class="n">02</span><h2>What we noticed when we looked</h2></div>
     <p>We looked at True L.I.O.'s public presence the way a prospective patient would, starting wherever a search or a scroll would actually land them, since every one of those landing spots is a door into the same funnel.</p>
-    <div class="stat-row">
-      <div class="stat"><div class="num">24K</div><div class="lbl">Instagram followers (@true.lio)</div></div>
-      <div class="stat"><div class="num">25</div><div class="lbl">Facebook page likes</div></div>
-      <div class="stat"><div class="num">317</div><div class="lbl">TikTok followers (@true.lio)</div></div>
-    </div>
+    <svg class="svg-chart" viewBox="0 0 660 190" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .lbl{font-family:'IBM Plex Sans',sans-serif;font-size:13px;fill:var(--ink);font-weight:500;}
+        .val{font-family:'IBM Plex Mono',monospace;font-size:14px;fill:var(--ink);font-weight:600;}
+        .sub{font-family:'IBM Plex Mono',monospace;font-size:10.5px;fill:var(--ink-faint);}
+      </style>
+      <line x1="150" y1="20" x2="150" y2="170" stroke="var(--border)" stroke-width="1"/>
+      <text x="0" y="46" class="lbl">Instagram</text>
+      <rect x="150" y="30" width="435" height="28" rx="2" fill="var(--accent)"/>
+      <text x="593" y="49" class="val">24,000</text>
+      <text x="0" y="96" class="lbl">Facebook</text>
+      <rect x="150" y="80" width="3" height="28" rx="1" fill="var(--action)"/>
+      <text x="161" y="99" class="val">25</text>
+      <text x="0" y="146" class="lbl">TikTok</text>
+      <rect x="150" y="130" width="7" height="28" rx="1" fill="var(--action)"/>
+      <text x="165" y="149" class="val">317</text>
+      <text x="150" y="182" class="sub">Followers, drawn to scale. Facebook and TikTok are not rendering errors.</text>
+    </svg>
     <p class="aside-note">(We pull this same read for every clinic we're seriously interested in working with, not just yours.)</p>
     <p>True L.I.O. doesn't come up on page one for searches like "GLP-1 weight loss Miami" or "medical weight loss Miami," and <strong>isn't running paid Meta or Google campaigns right now</strong>. That means virtually all 24,000 of those Instagram followers arrived organically, which is real proof the content works. It also means <strong>almost every new inquiry is landing as a phone call or a website form, not a click-to-book funnel</strong>.</p>
     <p class="pull">Nearly all of that audience lives on one channel, and none of it is currently backed by paid reach. A prospective patient who lands on Facebook or TikTok instead meets a page that reads as inactive (<strong>25 likes, 317 followers</strong>), while every inquiry that does come in has to be caught and nurtured by hand.</p>
@@ -249,13 +269,82 @@
 
   <section class="block">
     <div class="kicker"><span class="n">03</span><h2>Why that gap matters more heading into 2027</h2></div>
-    <p>True L.I.O. doesn't have an attention problem. 24,000 organic Instagram followers and a 5.0-star reputation solve that. The category is getting more crowded, though: aesthetic medicine's global market is projected near <strong>$124.7 billion in 2026</strong>, up from $99.4 billion in 2023, and more of that growth is chasing the same GLP-1 searches every month. When more competitors start paying for the attention True L.I.O. currently gets for free, organic reach stops being an advantage on its own. It becomes one more channel competing for a shrinking share of a patient's attention.</p>
-    <p>In that kind of market, the deciding factor usually isn't who has the better reputation. Miami has <strong>roughly 73 medical spas</strong> competing in this same broad category, and 91% of them are already rated 4.7 stars or higher, with nearly half sitting at a perfect 5.0 (Medical Spa Locator; MedSpa Scout, 2026). A near-perfect rating is table stakes in this market, not a differentiator. What actually moves market share in a field that crowded is speed: <strong>78% of buyers choose the business that responds to their inquiry first</strong>, and the odds of qualifying a lead drop sharply with every minute of delay (LeanData; MIT Sloan). True L.I.O. already wins the reputation contest. <strong>In a market with 73 similarly-rated options, the response-speed contest is the one that actually decides who gets the patient</strong>, and it's the one that decides who stays top of mind as the market keeps getting more crowded.</p>
+    <p>True L.I.O. doesn't have an attention problem. 24,000 organic Instagram followers and a 5.0-star reputation solve that. The category is getting more crowded, though, and more of that growth is chasing the same GLP-1 searches every month. When more competitors start paying for the attention True L.I.O. currently gets for free, organic reach stops being an advantage on its own. It becomes one more channel competing for a shrinking share of a patient's attention.</p>
+    <svg class="svg-chart" viewBox="0 0 660 210" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .h{font-family:'IBM Plex Sans',sans-serif;font-size:11px;fill:var(--ink-faint);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+        .lbl{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;fill:var(--ink-soft);}
+        .val{font-family:'IBM Plex Mono',monospace;font-size:15px;fill:var(--ink);font-weight:600;}
+        .sub{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--ink-faint);}
+      </style>
+      <text x="10" y="24" class="h">Aesthetic Medicine Market</text>
+      <line x1="10" y1="150" x2="270" y2="150" stroke="var(--border)" stroke-width="1"/>
+      <rect x="40" y="86" width="60" height="64" fill="var(--action-soft)"/>
+      <text x="70" y="76" class="val" text-anchor="middle">$99.4B</text>
+      <text x="70" y="166" class="lbl" text-anchor="middle">2023</text>
+      <rect x="170" y="55" width="60" height="95" fill="var(--accent)"/>
+      <text x="200" y="45" class="val" text-anchor="middle">$124.7B</text>
+      <text x="200" y="166" class="lbl" text-anchor="middle">2026</text>
+      <text x="10" y="188" class="sub">Global category size, growing every year</text>
+      <line x1="330" y1="10" x2="330" y2="195" stroke="var(--border)" stroke-width="1"/>
+      <text x="350" y="24" class="h">Miami Medspa Ratings</text>
+      <text x="350" y="52" class="lbl">91% of ~73 competitors already</text>
+      <text x="350" y="68" class="lbl">rate 4.7 stars or higher.</text>
+      <rect x="350" y="86" width="280" height="24" rx="3" fill="var(--surface-2)"/>
+      <rect x="350" y="86" width="255" height="24" rx="3" fill="var(--action)"/>
+      <text x="360" y="103" class="val" fill="var(--accent-ink)" font-size="12">91% at 4.7&#9733;+</text>
+      <text x="350" y="140" class="lbl" font-weight="600" fill="var(--ink)">A near-perfect rating is table stakes</text>
+      <text x="350" y="156" class="lbl" font-weight="600" fill="var(--ink)">here, not a differentiator.</text>
+    </svg>
+    <p>What actually moves market share in a field this crowded is speed: <strong>78% of buyers choose the business that responds to their inquiry first</strong>, and the odds of qualifying a lead drop sharply with every minute of delay (LeanData; MIT Sloan). True L.I.O. already wins the reputation contest. <strong>The response-speed contest is the one that actually decides who gets the patient</strong>, and it's the one that decides who stays top of mind as the market keeps getting more crowded.</p>
   </section>
 
   <section class="block">
     <div class="kicker"><span class="n">04</span><h2>The other half: what happens after someone reaches out</h2></div>
-    <p>Every patient path runs through the same handful of moments: an inquiry comes in, someone responds, the patient gets qualified, the appointment gets booked, and the patient shows up. True L.I.O. already runs GoHighLevel through a marketing partner, and the $299 new-patient offer paired with the Vagaro booking widget makes booking itself simple once a patient has decided to book, but neither tool touches the harder moments before that decision. With no paid Meta or Google campaigns running, nearly every new inquiry arrives as a phone call or a website form, not a click-to-book funnel, which means a person has to catch and route each one. That matters most after hours: nationally, <strong>43% of calls to local businesses land outside business hours</strong>, and that volume clusters in the two to three hours right after close, right when someone finally has time to think seriously about a GLP-1 program. A missed call there is rarely called back before the prospect finds someone else who picked up. The practice's own site adds a second gap: it tells new patients that after they book, someone will "promptly reach out&nbsp;.&nbsp;.&nbsp;. to gather additional information," meaning <strong>qualification happens after the commitment rather than before it</strong>, and there's no visible sequence for a website form fill that isn't ready to book on the spot. That's a real cost, since most patients don't convert on the first touch: it typically takes <strong>6 to 8 meaningful touchpoints</strong> to turn an inquiry into a sale, and <strong>roughly 80% of sales close only after five or more follow-ups</strong>. A warm lead with no fast first response, and a cold lead with no plan for touch two through eight, are both ordinary ways for a real GLP-1 prospect to <strong>become someone else's 5-star review instead of True L.I.O.'s</strong>.</p>
+    <p>Every patient path runs through the same handful of moments, and two of them are where True L.I.O. is currently losing people:</p>
+    <svg class="svg-chart" viewBox="0 0 660 270" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .stage{font-family:'IBM Plex Sans',sans-serif;font-size:12px;fill:var(--ink);font-weight:600;text-anchor:middle;}
+        .leak-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--action);font-weight:600;}
+        .leak-txt{font-family:'IBM Plex Sans',sans-serif;font-size:10.5px;fill:var(--ink-soft);}
+        .arrow{stroke:var(--border);stroke-width:2;fill:none;}
+      </style>
+      <rect x="10" y="20" width="112" height="46" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="66" y="48" class="stage">Inquiry</text>
+      <rect x="142" y="20" width="112" height="46" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="198" y="48" class="stage">Response</text>
+      <rect x="274" y="20" width="112" height="46" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="330" y="48" class="stage">Qualified</text>
+      <rect x="406" y="20" width="112" height="46" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="462" y="48" class="stage">Booked</text>
+      <rect x="538" y="20" width="112" height="46" rx="4" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="594" y="48" class="stage" fill="var(--accent-ink)">Showed Up</text>
+      <line x1="122" y1="43" x2="140" y2="43" class="arrow" marker-end="url(#arrow)"/>
+      <line x1="254" y1="43" x2="272" y2="43" class="arrow" marker-end="url(#arrow)"/>
+      <line x1="386" y1="43" x2="404" y2="43" class="arrow" marker-end="url(#arrow)"/>
+      <line x1="518" y1="43" x2="536" y2="43" class="arrow" marker-end="url(#arrow)"/>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="var(--border)"/>
+        </marker>
+      </defs>
+      <line x1="131" y1="70" x2="131" y2="98" stroke="var(--action)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle cx="131" cy="66" r="3" fill="var(--action)"/>
+      <text x="14" y="114" class="leak-lbl">LEAK 1</text>
+      <text x="14" y="130" class="leak-txt">43% of calls land after hours.</text>
+      <text x="14" y="145" class="leak-txt">A missed one rarely gets a callback</text>
+      <text x="14" y="160" class="leak-txt">before the prospect finds someone else.</text>
+      <line x1="330" y1="70" x2="330" y2="130" stroke="var(--action)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle cx="330" cy="66" r="3" fill="var(--action)"/>
+      <text x="300" y="146" class="leak-lbl">LEAK 2</text>
+      <text x="300" y="162" class="leak-txt">True L.I.O. qualifies patients</text>
+      <text x="300" y="177" class="leak-txt">after they book, not before.</text>
+      <rect x="10" y="195" width="640" height="62" rx="4" fill="var(--action-soft)"/>
+      <text x="28" y="216" class="leak-txt" font-weight="600" fill="var(--ink)">It takes 6&#8211;8 touchpoints to close most inquiries.</text>
+      <text x="28" y="234" class="leak-txt">80% of sales need 5+ follow-ups. Without a plan for touch two</text>
+      <text x="28" y="249" class="leak-txt">through eight, warm leads go cold before "Showed Up."</text>
+    </svg>
+    <p>True L.I.O. already runs GoHighLevel through a marketing partner, and the $299 new-patient offer paired with the Vagaro booking widget makes booking itself simple once a patient has decided to book. But neither tool touches the two moments above. Both are ordinary, fixable gaps. Left alone, they're also exactly how a warm lead or a cold lead quietly becomes <strong>someone else's 5-star review instead of True L.I.O.'s</strong>.</p>
   </section>
 
   <div class="close-block">
