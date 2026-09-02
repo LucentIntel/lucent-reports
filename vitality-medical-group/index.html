@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vitality Medical Group: Front-End Revenue Snapshot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script data-goatcounter="https://lucent-intelligence.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root {
+    --bg: #f5f3ea;
+    --surface: #fffdf8;
+    --surface-2: #ece7d8;
+    --ink: #2c2c26;
+    --ink-soft: #4a4c40;
+    --ink-faint: #75765f;
+    --border: #ddd6c1;
+    --accent: #6d7a5c;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6e9da;
+    --action: #5f7c7e;
+    --action-soft: #dfe8e8;
+    --action-ink: #ffffff;
+    --shadow: 0 1px 2px rgba(52,52,46,0.06), 0 6px 18px rgba(52,52,46,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1c16; --surface: #23241d; --surface-2: #2a2b22;
+      --ink: #efeee3; --ink-soft: #bcbcab; --ink-faint: #8c8d7d;
+      --border: #3a3b2f; --accent: #a3b48c; --accent-ink: #1c2114;
+      --accent-soft: #2e3626; --action: #8fb3b5; --action-soft: #223333;
+      --action-ink: #10201f;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 22px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1c16; --surface: #23241d; --surface-2: #2a2b22;
+    --ink: #efeee3; --ink-soft: #bcbcab; --ink-faint: #8c8d7d;
+    --border: #3a3b2f; --accent: #a3b48c; --accent-ink: #1c2114;
+    --accent-soft: #2e3626; --action: #8fb3b5; --action-soft: #223333;
+    --action-ink: #10201f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 8px 22px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .page { max-width: 740px; margin: 0 auto; padding: 20px 18px 30px; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  header.brief-head {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  header.brief-head::before {
+    content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px;
+    background: var(--accent); border-radius: 0 3px 3px 0;
+  }
+  .sprig {
+    position: absolute; top: 14px; right: 18px; width: 46px; height: 46px;
+    opacity: 0.55; color: var(--accent);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: "Fjalla One", "IBM Plex Sans", sans-serif;
+    font-weight: 400; font-size: clamp(22px, 4.8vw, 27px);
+    letter-spacing: 0.01em; margin: 8px 0 7px; text-wrap: balance;
+    color: var(--ink);
+  }
+  .sub { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 10px; max-width: 62ch; }
+  .head-meta {
+    display: flex; flex-wrap: wrap; gap: 5px 16px;
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint); border-top: 1px solid var(--border);
+    padding-top: 9px; margin-top: 2px;
+  }
+
+  .trust-strip {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 12px; color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .trust-strip strong { color: var(--ink); font-weight: 500; }
+
+  section.block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    padding: 13px 20px 14px;
+    margin-bottom: 9px;
+  }
+  .kicker {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 0 0 6px;
+  }
+  .kicker .n {
+    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.05em;
+  }
+  h2 {
+    font-family: "Fjalla One", "IBM Plex Sans", sans-serif;
+    font-weight: 400; font-size: 15.5px; letter-spacing: 0.015em;
+    margin: 0; color: var(--ink);
+  }
+  section.block p { margin: 0 0 7px; font-size: 13px; color: var(--ink-soft); }
+  section.block p:last-child { margin-bottom: 0; }
+  section.block strong { color: var(--ink); font-weight: 600; }
+  .lede p { font-size: 13.5px; }
+
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin: 8px 0 9px;
+  }
+  .stat {
+    background: var(--surface-2); border-radius: 3px;
+    padding: 7px 9px; border: 1px solid var(--border);
+  }
+  .stat .num {
+    font-family: "IBM Plex Mono", monospace; font-weight: 600;
+    font-size: 17px; color: var(--action);
+  }
+  .stat .lbl { font-size: 10.5px; color: var(--ink-faint); margin-top: 1px; line-height: 1.3; }
+  .aside-note { font-size: 11px; color: var(--ink-faint); font-style: italic; margin: -3px 0 8px; }
+
+  .pull {
+    border-left: 2px solid var(--action);
+    background: var(--action-soft);
+    border-radius: 0 3px 3px 0;
+    padding: 7px 12px;
+    font-size: 12.5px; color: var(--ink);
+    margin: 4px 0 2px;
+  }
+  .pull strong { color: var(--action); }
+
+  /* ---- chart components ---- */
+  .chart-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px 8px;
+    margin: 9px 0;
+  }
+  .chart-title {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-faint);
+    margin: 0 0 6px;
+  }
+  .chart-card svg { display: block; width: 100%; height: auto; }
+  .chart-caption { font-size: 12px; color: var(--ink-soft); margin: 6px 0 2px; }
+  .chart-source {
+    font-size: 10px; color: var(--ink-faint); font-style: italic;
+    margin: 4px 0 0; padding-top: 4px; border-top: 1px solid var(--border);
+  }
+  .chart-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chart-grid .chart-card { flex: 1 1 260px; min-width: 0; margin: 0; }
+  .bar-a { fill: var(--accent); }
+  .bar-b { fill: var(--action); }
+  .bar-track { fill: var(--surface); stroke: var(--border); stroke-width: 1; }
+  .chart-val { font-family: "IBM Plex Mono", monospace; font-weight: 600; fill: var(--ink); font-size: 13px; }
+  .chart-val-sm { font-family: "IBM Plex Mono", monospace; font-weight: 600; fill: var(--ink); font-size: 11px; }
+  .chart-lbl { font-family: "IBM Plex Sans", sans-serif; fill: var(--ink-faint); font-size: 10.5px; }
+  .chart-lbl-strong { font-family: "IBM Plex Sans", sans-serif; fill: var(--ink); font-size: 10.5px; font-weight: 500; }
+
+  .gap-divider { border-top: 1px solid var(--border); margin: 16px 0 10px; padding-top: 12px; }
+  .gap-label { font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--action); margin: 0 0 4px; }
+  .gap-headline { font-family: "Fjalla One", "IBM Plex Sans", sans-serif; font-size: 14.5px; font-weight: 400; color: var(--ink); margin: 0 0 6px; letter-spacing: 0.01em; }
+
+  /* ---- workflow diagram ---- */
+  .wf-node { fill: var(--surface); stroke: var(--border); stroke-width: 1.2; }
+  .wf-node-top { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+  .wf-node-good { fill: var(--action-soft); stroke: var(--action); stroke-width: 1.3; }
+  .wf-node-gap { fill: var(--surface); stroke: var(--ink-faint); stroke-width: 1.1; stroke-dasharray: 4 3; }
+  .wf-arrow { stroke: var(--ink-faint); stroke-width: 1.4; fill: none; }
+  .wf-arrow-dashed { stroke: var(--ink-faint); stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+  .wf-text { font-family: "IBM Plex Sans", sans-serif; fill: var(--ink); font-size: 11px; }
+  .wf-text-sm { font-family: "IBM Plex Sans", sans-serif; fill: var(--ink-faint); font-size: 9.5px; }
+  .wf-label { font-family: "IBM Plex Mono", monospace; fill: var(--accent); font-size: 9px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .wf-label-gap { font-family: "IBM Plex Mono", monospace; fill: var(--ink-faint); font-size: 9px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .close-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 15px 20px 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 9px;
+  }
+  .close-block h2 { color: var(--accent); }
+  .close-block p { color: var(--ink); font-size: 13px; margin: 0 0 7px; }
+  .close-block p:last-child { margin-bottom: 0; font-weight: 500; }
+
+  .cta-block {
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .cta-text { font-size: 13px; color: var(--accent-ink); max-width: 44ch; }
+  .cta-text strong { display: block; font-family: "Fjalla One", sans-serif; font-size: 15.5px; font-weight: 400; letter-spacing: 0.01em; margin-bottom: 2px; }
+  .cta-text .urgency { display: block; font-size: 11px; opacity: 0.85; margin-top: 3px; }
+  .cta-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase;
+    background: var(--surface); color: var(--accent);
+    border-radius: 3px; padding: 11px 18px;
+    white-space: nowrap; text-decoration: none; flex: none;
+  }
+
+  .signoff {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 11.5px; color: var(--ink-faint);
+    padding: 0 3px; margin-bottom: 4px; flex-wrap: wrap; gap: 4px;
+  }
+  .signoff strong { color: var(--ink-soft); font-weight: 600; }
+
+  footer {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", monospace;
+    line-height: 1.5;
+  }
+  footer p { margin: 2px 0; }
+
+  @media (max-width: 480px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .chart-grid { flex-direction: column; }
+    .cta-block { flex-direction: column; align-items: stretch; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="brief-head">
+    <svg class="sprig" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M32 58V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M32 30C32 30 20 26 18 14C18 14 32 14 32 30Z" fill="currentColor"/>
+      <path d="M32 24C32 24 44 20 46 8C46 8 32 8 32 24Z" fill="currentColor"/>
+      <path d="M32 40C32 40 22 37 20 27C20 27 32 27 32 40Z" fill="currentColor"/>
+      <path d="M32 34C32 34 42 31 44 21C44 21 32 21 32 34Z" fill="currentColor"/>
+    </svg>
+    <div class="eyebrow">Prepared exclusively for Vitality Medical Group</div>
+    <h1>The Gap Between 356 Posts and 22 People Seeing Them</h1>
+    <p class="sub">Vitality Medical Group has three years of real patient results behind it &mdash; the question is how many people in the Lake of the Ozarks market ever get far enough to see them before they book an initial consultation somewhere else.</p>
+    <div class="head-meta">
+      <span>Attn: Miranda Henley, PharmD</span>
+      <span>Eldon, MO</span>
+      <span>Prepared by Lucent Intelligence</span>
+    </div>
+  </header>
+
+  <div class="trust-strip">
+    <strong>A quick note on who's writing this:</strong> Lucent Intelligence builds the front-end nurture system for hormone, weight-loss, and metabolic clinics: the layer between a click, a DM, or a phone call and a booked consult. We build a snapshot like this before every clinic we reach out to, not after. This isn't a pitch; it's what we actually found.
+  </div>
+
+  <section class="block lede">
+    <div class="kicker"><span class="n">01</span><h2>What's already working in your favor</h2></div>
+    <p>Miranda Henley has been the Eldon community&rsquo;s own pharmacist since 2013, when she bought Eldon Drug after training as a pharmacy technician there in high school. That&rsquo;s the kind of local trust a marketing budget can&rsquo;t buy, and it shows up in the reviews Vitality Medical Group has earned since opening in 2023: patients naming real outcomes, in their own words &mdash; 30 pounds lost before a wedding, a patient who came off blood pressure and cholesterol medication after starting Semaglutide. That&rsquo;s a real, credible story. The real question is how many people across the broader Lake of the Ozarks market, who don&rsquo;t already know Miranda from the pharmacy counter, ever get far enough to hear it.</p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">02</span><h2>What we noticed when we looked</h2></div>
+    <p>We looked at Vitality Medical Group&rsquo;s public presence the way a prospective patient searching from Osage Beach or Camdenton would &mdash; not from inside Eldon, where the name already carries weight.</p>
+
+    <div class="chart-card">
+      <p class="chart-title">Content produced vs. people reached &middot; Instagram &amp; Facebook</p>
+      <svg viewBox="0 0 620 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart comparing 356 Instagram posts and 381 Facebook likes against only 22 Instagram followers">
+        <line x1="30" y1="170" x2="590" y2="170" stroke="var(--border)" stroke-width="1"/>
+        <rect x="60" y="45.4" width="90" height="124.6" rx="2" class="bar-a"/>
+        <text x="105" y="35" text-anchor="middle" class="chart-val">356</text>
+        <text x="105" y="188" text-anchor="middle" class="chart-lbl">IG posts</text>
+        <text x="105" y="200" text-anchor="middle" class="chart-lbl">published</text>
+
+        <rect x="210" y="36.7" width="90" height="133.3" rx="2" class="bar-b"/>
+        <text x="255" y="27" text-anchor="middle" class="chart-val">381</text>
+        <text x="255" y="188" text-anchor="middle" class="chart-lbl">Facebook</text>
+        <text x="255" y="200" text-anchor="middle" class="chart-lbl">page likes</text>
+
+        <rect x="360" y="162.3" width="90" height="7.7" rx="2" class="bar-a"/>
+        <text x="405" y="155" text-anchor="middle" class="chart-val">22</text>
+        <text x="405" y="188" text-anchor="middle" class="chart-lbl">Instagram</text>
+        <text x="405" y="200" text-anchor="middle" class="chart-lbl">followers</text>
+      </svg>
+      <p class="chart-source">Source: Vitality Medical Group&rsquo;s public Instagram and Facebook profiles, scanned September 2, 2026.</p>
+    </div>
+
+    <p class="aside-note">(We pull this same read for every clinic we're seriously interested in working with, not just yours.)</p>
+    <p>Patients are more likely to choose a provider with an active social presence &mdash; recent industry research puts patients who are more likely to pick a provider with active social profiles at 59%, and it&rsquo;s the first thing a lot of them check before they ever call.</p>
+    <p class="pull">356 posts is a real, sustained content effort. 22 followers means almost none of it is reaching anyone who isn&rsquo;t already a patient.</p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">03</span><h2>The market underneath this &mdash; in numbers</h2></div>
+    <p>Two things are true about this category right now: it&rsquo;s growing fast nationally, and the Eldon / Lake of the Ozarks market has real, specific demand behind it. Here&rsquo;s the actual data.</p>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <p class="chart-title">National GLP-1 use has more than doubled since 2024</p>
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart showing US adults currently using a GLP-1 medication rose from 5.8 percent in 2024 to 12.4 percent in 2026">
+          <line x1="20" y1="150" x2="280" y2="150" stroke="var(--border)" stroke-width="1"/>
+          <rect x="45" y="95.9" width="80" height="54.1" rx="2" class="bar-a"/>
+          <text x="85" y="86" text-anchor="middle" class="chart-val-sm">5.8%</text>
+          <text x="85" y="167" text-anchor="middle" class="chart-lbl">Feb 2024</text>
+
+          <rect x="175" y="34.3" width="80" height="115.7" rx="2" class="bar-b"/>
+          <text x="215" y="24" text-anchor="middle" class="chart-val-sm">12.4%</text>
+          <text x="215" y="167" text-anchor="middle" class="chart-lbl">Jun 2026</text>
+        </svg>
+        <p class="chart-caption">Share of U.S. adults currently using a GLP-1 medication for weight loss.</p>
+        <p class="chart-source">Source: Gallup, national panel survey, 2026.</p>
+      </div>
+
+      <div class="chart-card">
+        <p class="chart-title">Who's actually using them</p>
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Horizontal bar chart: all US adults 12 percent, women and men ages 50 to 64 22 percent, adults 65 and older 9 percent">
+          <text x="0" y="24" class="chart-lbl-strong">All U.S. adults</text>
+          <rect x="0" y="30" width="270" height="18" rx="2" class="bar-track"/>
+          <rect x="0" y="30" width="129.6" height="18" rx="2" class="bar-a"/>
+          <text x="137" y="43" class="chart-val-sm">12%</text>
+
+          <text x="0" y="76" class="chart-lbl-strong">Ages 50&ndash;64</text>
+          <rect x="0" y="82" width="270" height="18" rx="2" class="bar-track"/>
+          <rect x="0" y="82" width="237.6" height="18" rx="2" class="bar-b"/>
+          <text x="245" y="95" class="chart-val-sm">22%</text>
+
+          <text x="0" y="128" class="chart-lbl-strong">Ages 65+</text>
+          <rect x="0" y="134" width="270" height="18" rx="2" class="bar-track"/>
+          <rect x="0" y="134" width="97.2" height="18" rx="2" class="bar-a"/>
+          <text x="105" y="147" class="chart-val-sm">9%</text>
+        </svg>
+        <p class="chart-caption">Ages 50&ndash;64 are the single highest-usage group nationally.</p>
+        <p class="chart-source">Source: KFF, 2026.</p>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <p class="chart-title">Local household income vs. a typical monthly program cost</p>
+      <svg viewBox="0 0 620 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Horizontal bar chart comparing monthly median household income in Eldon and Miller County against a typical GLP-1 monthly program cost">
+        <text x="0" y="24" class="chart-lbl-strong">Eldon median household income</text>
+        <rect x="0" y="30" width="590" height="18" rx="2" class="bar-track"/>
+        <rect x="0" y="30" width="410.3" height="18" rx="2" class="bar-a"/>
+        <text x="418" y="43" class="chart-val-sm">$3,474/mo</text>
+
+        <text x="0" y="76" class="chart-lbl-strong">Miller County median household income</text>
+        <rect x="0" y="82" width="590" height="18" rx="2" class="bar-track"/>
+        <rect x="0" y="82" width="557.9" height="18" rx="2" class="bar-a"/>
+        <text x="500" y="95" class="chart-val-sm">$4,728/mo</text>
+
+        <text x="0" y="128" class="chart-lbl-strong">Typical GLP-1 program cost (cash-pay)</text>
+        <rect x="0" y="134" width="590" height="18" rx="2" class="bar-track"/>
+        <rect x="0" y="134" width="28.9" height="18" rx="2" class="bar-b"/>
+        <text x="37" y="147" class="chart-val-sm">$245/mo</text>
+      </svg>
+      <p class="chart-caption">At local income levels, a monthly program is a small, financeable slice of household income &mdash; not the barrier it can look like on price alone. Worth leading with in outreach, especially alongside the CareCredit financing already on your site.</p>
+      <p class="chart-source">Sources: World Population Review / U.S. Census Bureau, 2026 (Eldon &amp; Miller County median household income); cash-pay GLP-1 pricing following November 2025 TrumpRx pricing agreements.</p>
+    </div>
+
+    <p style="font-size:12px; color:var(--ink-soft); margin-top:2px;">One more data point worth knowing: Missouri&rsquo;s adult obesity rate is 37.45% &mdash; well above the national rate driving this demand in the first place. <em>Source: CDC BRFSS, via Data Commons, 2022.</em></p>
+
+    <div class="gap-divider">
+      <p class="gap-label">Gap 1 of 3</p>
+      <p class="gap-headline">Price isn&rsquo;t what's costing you patients</p>
+      <p>Look at the income chart again: a $245/month program is a small slice of both an Eldon and a Miller County household&rsquo;s monthly income. If affordability isn&rsquo;t the obstacle, something else is deciding who books &mdash; and the research on that is blunt.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">35&ndash;50%</div><div class="lbl">of sales go to whoever responds to the lead first</div></div>
+        <div class="stat"><div class="num">21&times;</div><div class="lbl">more likely to qualify a lead reached in 5 min vs. 30</div></div>
+        <div class="stat"><div class="num">45%</div><div class="lbl">less likely to convert if it takes 7+ call attempts to reach them</div></div>
+      </div>
+      <p class="chart-source" style="border-top:none; padding-top:0;">Sources: InsideSales.com; MIT/Lead Response Management study (Harvard Business Review); Velocify.</p>
+      <p class="pull">When price isn&rsquo;t the obstacle, speed and persistence are what's actually deciding who books. That's a process gap, not a pricing one &mdash; and Section 05 below shows it's not just a during-hours problem, either.</p>
+    </div>
+
+    <div class="gap-divider">
+      <p class="gap-label">Gap 2 of 3</p>
+      <p class="gap-headline">Your content lives where your core patient doesn't</p>
+      <p>Women 50&ndash;64 are the single highest-usage group for GLP-1 care nationally (see the chart above). That same age group is on Facebook far more than Instagram.</p>
+      <div class="chart-card">
+        <p class="chart-title">Platform reach among ages 50&ndash;64</p>
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar chart showing 74 percent of adults aged 50 to 64 use Facebook compared with 40 percent who use Instagram">
+          <line x1="20" y1="150" x2="280" y2="150" stroke="var(--border)" stroke-width="1"/>
+          <rect x="45" y="64.2" width="80" height="85.8" rx="2" class="bar-a"/>
+          <text x="85" y="54" text-anchor="middle" class="chart-val-sm">74%</text>
+          <text x="85" y="167" text-anchor="middle" class="chart-lbl">Facebook</text>
+
+          <rect x="175" y="103.6" width="80" height="46.4" rx="2" class="bar-b"/>
+          <text x="215" y="93" text-anchor="middle" class="chart-val-sm">40%</text>
+          <text x="215" y="167" text-anchor="middle" class="chart-lbl">Instagram</text>
+        </svg>
+        <p class="chart-caption">Share of U.S. adults ages 50&ndash;64 who use each platform.</p>
+        <p class="chart-source">Source: Pew Research Center, 2025.</p>
+      </div>
+      <p class="pull">356 of your last posts went to the platform your core patient uses least. Facebook &mdash; where they actually are &mdash; has had far less investment, and it shows in the 381 likes from a market this size.</p>
+    </div>
+
+    <div class="gap-divider">
+      <p class="gap-label">Gap 3 of 3</p>
+      <p class="gap-headline">A faster-growing, highly reachable demographic your competitors are already buying</p>
+      <p>Ages 50&ndash;64 aren&rsquo;t the only real audience here. Women 30&ndash;49 are more than twice as likely as men in that age group to have used a GLP-1, and adoption now spans every generation with purchasing power, not just one. That group is also easy to reach with paid media &mdash; and Missouri Medical Clinic and Metabolic Research Center are already doing it in your market.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">2&times;</div><div class="lbl">higher GLP-1 use among women 30&ndash;49 vs. men the same age</div></div>
+        <div class="stat"><div class="num">80% / 62%</div><div class="lbl">of adults 30&ndash;49 use Facebook / Instagram &mdash; both paid-ad ready</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">local competitors already running active paid ads for this audience</div></div>
+      </div>
+      <p class="chart-source" style="border-top:none; padding-top:0;">Sources: RAND, 2025; Pew Research Center, 2025; Meta Ad Library, scanned September 2, 2026.</p>
+      <p class="pull">Right now, Vitality Medical Group has no paid presence competing for any of this &mdash; while two other clinics in your own market do.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">04</span><h2>Why that gap matters more heading into 2027</h2></div>
+    <p>Google Search still wins the patient who already knows what they want, but it's an auction. Cost-per-lead on terms like &ldquo;medical weight loss near me&rdquo; and &ldquo;semaglutide Lake of the Ozarks&rdquo; already runs <strong>$15&ndash;$35</strong> before anything converts, and that number climbs as your local market gets more crowded. It is.</p>
+    <p>Meta works on a different mechanic: it reaches people <em>before</em> they've decided they have a problem worth solving. A real presence there builds familiarity for free, so by the time someone does search, they're not comparing five strangers on price. They already recognize your name. That's <strong>being known before you're needed</strong>, and no amount of Google spend buys it.</p>
+  </section>
+
+  <section class="block">
+    <div class="kicker"><span class="n">05</span><h2>The other half: what happens after someone reaches out</h2></div>
+    <p>When we talked, you mentioned that patients can reach Vitality Medical Group either by calling in or by filling out the online form &mdash; and that most of them call. That lines up with Gap 1 above: your busiest, highest-converting channel is also the one with the least visible backup.</p>
+
+    <div class="chart-card">
+      <p class="chart-title">The booking path, as it stands today</p>
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow diagram showing two booking paths: a phone call path used by most patients with no stated backup if unanswered, and an online form path with no visible confirmation step">
+        <defs>
+          <marker id="wf-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-faint)"/>
+          </marker>
+        </defs>
+
+        <rect x="292" y="6" width="180" height="34" rx="4" class="wf-node-top"/>
+        <text x="382" y="27" text-anchor="middle" class="wf-text">Someone reaches out</text>
+
+        <path d="M320,40 C260,58 200,54 155,74" class="wf-arrow" marker-end="url(#wf-arrow)"/>
+        <text x="195" y="58" text-anchor="middle" class="wf-label">Most patients</text>
+
+        <path d="M400,40 C470,58 560,54 610,74" class="wf-arrow" marker-end="url(#wf-arrow)"/>
+        <text x="545" y="58" text-anchor="middle" class="wf-label-gap">Fewer patients</text>
+
+        <rect x="55" y="78" width="200" height="36" rx="4" class="wf-node"/>
+        <text x="155" y="100" text-anchor="middle" class="wf-text">Calls the clinic phone line</text>
+
+        <path d="M155,114 L155,140" class="wf-arrow" marker-end="url(#wf-arrow)"/>
+
+        <rect x="40" y="144" width="230" height="46" rx="4" class="wf-node"/>
+        <text x="155" y="163" text-anchor="middle" class="wf-text">Live answer during business</text>
+        <text x="155" y="178" text-anchor="middle" class="wf-text">hours (M&ndash;F 9&ndash;5, Sat by appt.)</text>
+
+        <path d="M155,190 L155,216" class="wf-arrow" marker-end="url(#wf-arrow)"/>
+
+        <rect x="85" y="220" width="140" height="34" rx="4" class="wf-node-good"/>
+        <text x="155" y="241" text-anchor="middle" class="wf-text">Booked</text>
+
+        <rect x="280" y="140" width="195" height="76" rx="4" class="wf-node-gap"/>
+        <text x="377" y="158" text-anchor="middle" class="wf-label-gap">The gap</text>
+        <text x="377" y="174" text-anchor="middle" class="wf-text-sm">If unanswered &mdash; after hours,</text>
+        <text x="377" y="188" text-anchor="middle" class="wf-text-sm">on another line, or out sick &mdash;</text>
+        <text x="377" y="202" text-anchor="middle" class="wf-text-sm">there's no stated next step.</text>
+        <path d="M270,163 L278,163" class="wf-arrow-dashed"/>
+
+        <rect x="500" y="78" width="220" height="46" rx="4" class="wf-node"/>
+        <text x="610" y="97" text-anchor="middle" class="wf-text">Submits the online contact /</text>
+        <text x="610" y="112" text-anchor="middle" class="wf-text">self-assessment form</text>
+
+        <path d="M610,124 L610,140" class="wf-arrow-dashed" marker-end="url(#wf-arrow)"/>
+
+        <rect x="515" y="144" width="190" height="46" rx="4" class="wf-node-gap"/>
+        <text x="610" y="163" text-anchor="middle" class="wf-text-sm">No visible confirmation step</text>
+        <text x="610" y="177" text-anchor="middle" class="wf-text-sm">or stated response time</text>
+
+        <path d="M610,190 L610,216" class="wf-arrow-dashed" marker-end="url(#wf-arrow)"/>
+
+        <rect x="530" y="220" width="160" height="34" rx="4" class="wf-node-gap"/>
+        <text x="610" y="241" text-anchor="middle" class="wf-text-sm">Outcome unclear from outside</text>
+
+        <text x="380" y="282" text-anchor="middle" class="wf-text-sm">Most patients choose the channel with no visible backup &mdash; it depends on one person answering.</text>
+      </svg>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">41%</div><div class="lbl">of all patient calls to medical practices happen outside 8am&ndash;5pm weekday hours</div></div>
+      <div class="stat"><div class="num">55%</div><div class="lbl">of patients now expect 24/7 access to basic scheduling</div></div>
+    </div>
+    <p class="chart-source" style="border-top:none; padding-top:0;">Source: Relatient Communications Study, 2025.</p>
+
+    <p>None of this means the phone is the wrong channel &mdash; it&rsquo;s clearly the one patients trust. It means the channel doing the most work right now is also the one most exposed if a call gets missed, and that exposure isn&rsquo;t a small edge case: on the numbers above, a real chunk of the people trying to reach Vitality Medical Group are calling at a time nobody&rsquo;s there to answer. That's not a speed problem you can fix by having someone answer faster during the day &mdash; it's a coverage gap, and it's exactly what a nurture system built to catch and follow up on after-hours contact is for. For a patient worth $3,000&ndash;$15,000+ over the course of treatment, that single point of failure is the whole ballgame.</p>
+  </section>
+
+  <div class="close-block">
+    <div class="kicker"><span class="n">06</span><h2>The market isn't waiting</h2></div>
+    <p>Missouri Medical Clinic in Osage Beach is currently running active paid ads across Meta. So is Metabolic Research Center, the national weight-loss franchise with a Lake of the Ozarks location. Both are buying attention in the same regional market Vitality Medical Group draws from.</p>
+    <p>As more of them turn on paid marketing, winning stops being about who has the best reviews. Everyone will. It comes down to <strong>timing</strong>: who's already top of mind before the prospect starts typing, and who catches them the moment they raise their hand.</p>
+    <p>Because if they don't hear back fast enough, they're not gone. They're one search away from the clinic down the road.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-text"><strong>Worth 20 minutes?</strong>See exactly where this shows up in Vitality Medical Group's own numbers. No pitch, just the map.<span class="urgency">We only take a handful of Mapping Calls each month per metro area &mdash; Lake of the Ozarks included.</span></div>
+    <a class="cta-btn" href="https://lucentintelligence.io/book-now">Book a Mapping Call &rarr;</a>
+  </div>
+
+  <div class="signoff"><strong>Caleb Barretto</strong> &middot; Lucent Intelligence &middot; Patient Revenue OS&trade;</div>
+
+  <footer>
+    <p>Sources: Google Business Profile, vitalitymedmo.com, Vitality Medical Group&rsquo;s Facebook and Instagram profiles, Meta Ad Library, and Marketing LTB&rsquo;s 2026 Medical Marketing Statistics report. National and local market figures: Gallup (2026 GLP-1 usage survey), KFF (2026 GLP-1 demographic usage data), RAND (2025 GLP-1 usage-by-demographic survey), Pew Research Center (2025 social media use by age), World Population Review / U.S. Census Bureau (2026 Eldon &amp; Miller County household income and population), CDC BRFSS via Data Commons (2022 Missouri obesity rate), cash-pay GLP-1 pricing following the November 2025 TrumpRx pricing agreements, lead-response research from InsideSales.com, the MIT/Lead Response Management study (Harvard Business Review), and Velocify, and the Relatient Communications Study, 2025 (after-hours patient call volume and patient expectations). Booking-path detail per our own conversation with your team. Figures reflect a public scan of Vitality Medical Group&rsquo;s online presence on the date this brief was prepared (September 2, 2026).</p>
+    <p>Prepared for Vitality Medical Group only, not a template for other clinics.</p>
+  </footer>
+
+</div>
+</body>
+</html>
